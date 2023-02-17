@@ -17,14 +17,14 @@
 #include <iostream>
 #include <vector> 
 
-long long find (long long n, long long m, std::vector<std::vector<long long>>& DP) {
+long long pyramid_count(long long n, long long m, std::vector<std::vector<long long>>& DP) {
     if (n < 0 || m <= 0) return 0;
     if (DP[n][m] != 0) return DP[n][m];
-    DP[n][m] = find(n - m, m, DP) + find(n, m - 1, DP);
+    DP[n][m] = pyramid_count(n - m, m, DP) + pyramid_count(n, m - 1, DP);
     return DP[n][m];
 }
 
-int main () {
+int main() {
     long long n = 0;
     std::cin >> n;
     std::vector<std::vector<long long>> DP(n + 1, std::vector<long long>(n + 1));
@@ -33,8 +33,7 @@ int main () {
         DP[1][i] = 1;
         DP[i][1] = 1;
     } 
-    long long ans = find(n, n, DP);
-    std::cout << ans << '\n';
+    std::cout << pyramid_count(n, n, DP) << '\n';
     return 0;
 }
 
