@@ -28,7 +28,7 @@ int main() {
     long long n = 0;
     std::cin >> n;
     std::vector<std::vector<long long>> DP(n + 1, std::vector<long long>(n + 1));
-    for (long long i = 1; i < n + 1; i++){
+    for (long long i = 1; i < n + 1; i++) {
         DP[0][i] = 1;
         DP[1][i] = 1;
         DP[i][1] = 1;
