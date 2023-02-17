@@ -23,14 +23,14 @@
 #include <iostream>
 #include <vector> 
 
-int main () {
+int main() {
     int n = 0;
     std::cin >> n;
     std::vector<int> DP(n + 1);
     for (int i = 2; i < n + 1; i++) {
         DP[i] = DP[i - 1];
-        if (i % 4 == 0) DP[i] = std::min(DP[i], DP[i / 4]);
         if (i % 5 == 0) DP[i] = std::min(DP[i], DP[i / 5]);
+        else if (i % 4 == 0) DP[i] = std::min(DP[i], DP[i / 4]);
         ++DP[i];
     }
     std::cout << DP[n] << '\n';
